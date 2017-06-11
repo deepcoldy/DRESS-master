@@ -14,8 +14,6 @@ define(function(req,exp){
         tel:"",
         companyName:"",
         registerFrom:"100",
-        registerTime:"2017-06-11 19:20:11",
-        registerIp:"127.0.0.1"
     }
     exp.onInit = function (done) {
         // 如果注册成功了
