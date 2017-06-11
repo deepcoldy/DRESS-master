@@ -76,7 +76,7 @@ define(function(req,exp){
         service.register(exp.args,function (rs) {
             console.log(rs);
             if(rs.status == "SUCCESS"){
-                localStorage.userId = rs.userId;
+                localStorage.userId = rs.data.userId;
                 $(".ui-registerResult-con").show();
                 $(".ui-default-con").hide();
             }else{

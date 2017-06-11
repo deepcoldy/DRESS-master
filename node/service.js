@@ -23,9 +23,7 @@ exports.getVerify = function(params,session){
    return {
        url:"/verify/code",
        type:"post",
-       data:{
-       }
-
+       data:{}
    }
 };
 //校验验证码
