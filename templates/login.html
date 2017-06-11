@@ -15,10 +15,13 @@
             </div>
             <div class="ui-error-con">
                 <span class="ui-error-icon"></span>
-                <span class="ui-error-text">请输入正确的用户名或密码</span>
+                <span class="ui-error-text">请输入正确的用户名或密码或验证码</span>
             </div>
+            <input type="text" data-event="blur>hideError" data-bind="getVerifyCode" class="getVerifyCode"/>
+            <img class="getVerify">
             <div data-event="login" class="ui-web-btn">登录</div>
-            <div data-event="register" class="ui-web-btn" style="margin-top:1.07143rem;">注册</div>
+            <span data-event="register" class="clickgo">注册</span>
+            <span data-event="resetpassword" class="clickgo">重置密码</span>
         </div>
 
         <div class="ui-procol-des">

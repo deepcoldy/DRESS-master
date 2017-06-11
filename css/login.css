@@ -84,3 +84,23 @@
 .ui-order-l-des:after{
     left: 0.55556rem;
 }
+.getVerifyCode {
+    border: 1px solid #666;
+    border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -webkit-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -moz-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -o-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -mso-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    line-height: 3.22222rem;
+    width: 150px;
+    margin-bottom: 12px;
+}
+.getVerify {
+    display: inline-block;
+    max-width: 150px;
+}
+.clickgo {
+    cursor: pointer;
+    float: right;
+    padding: 10px;
+}

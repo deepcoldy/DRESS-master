@@ -18,6 +18,41 @@ exports.login = function(params,session){
 
    }
 };
+//获取验证码
+exports.getVerify = function(params,session){
+   return {
+       url:"/verify/code",
+       type:"post",
+       data:{
+       }
+
+   }
+};
+//校验验证码
+exports.verifyCheck = function(params,session){
+   return {
+       url:"/Verify/check",
+       type:"post",
+       data:{
+            code:params.code
+       }
+
+   }
+};
+//校验验证码
+exports.resetpassword = function(params,session){
+   return {
+       url:"/user/resetPass",
+       type:"post",
+       data:{
+            userId:params.userId,
+            password:params.password,
+            password:params.password,
+            password:params.step
+       }
+
+   }
+};
 //注册
 exports.register = function(params,session){
    return {
@@ -28,9 +63,23 @@ exports.register = function(params,session){
             email:params.email,
             tel:Number(params.tel),
             companyName:params.companyName,
+            registerFrom:params.registerFrom
+            // registerTime:moment().format("YYYY-MM-DD HH:mm:ss"),
+            // registerIp:session.ip
+       }
+
+   }
+};
+//邮箱激活
+exports.activation = function(params,session){
+   return {
+       url:"/user/activation",
+       type:"post",
+       data:{
+            code:params.code,
+            userId:params.userId,
             registerFrom:params.registerFrom,
-            registerTime:moment().format("YYYY-MM-DD HH:mm:ss"),
-            registerIp:session.ip
+            type:params.type
        }
 
    }

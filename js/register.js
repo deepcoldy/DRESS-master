@@ -16,24 +16,37 @@ define(function(req,exp){
         registerFrom:"100",
     }
     exp.onInit = function (done) {
-        // 如果注册成功了
-        // exp.registerSuccess=true;
-        // var time=setInterval(function(){
-        //     var value=parseInt($("#endtime").text());
-        //     if (value==0) {
-        //         clearInterval(time);
-        //         exp.login();
-        //     }else{
-        //         value--;
-        //        $("#endtime").html(value) 
-        //     }
-        // },1000);
-
-        if(sessionStorage.userId){
-            exp.go("list");
-        }else {
-            done();
-        }
+        //如果邮箱激活进来
+        //url="www.test.com/#register/activation/code"
+        var dress=window.location.href;
+        if (dress.indexOf("activation/")>0) {
+            exp.registerSuccess=true;
+            var code=dress.substring(dress.lastIndexOf("/")+1);
+            var data={};
+            data.code=code;
+            data.userId=10043;
+            data.registerFrom="100",
+            data.type="100";
+            service.activation(data,function (rs) {
+                if(rs.status == "SUCCESS"){
+                    $(".registerSuccess h5").html("激活成功");
+                    $(".registerSuccess .content").show();
+                    var time=setInterval(function(){
+                        var value=parseInt($("#endtime").text());
+                        if (value==0) {
+                            clearInterval(time);
+                            exp.login();
+                        }else{
+                            value--;
+                           $("#endtime").html(value) 
+                        }
+                    },1000);
+                }else{
+                    $(".registerSuccess h5").html("激活失败请重新注册").show();
+                }
+            });
+        };
+        done();
     }
 
     exp.register = function () {
@@ -63,7 +76,7 @@ define(function(req,exp){
         service.register(exp.args,function (rs) {
             console.log(rs);
             if(rs.status == "SUCCESS"){
-                sessionStorage.userId = "10001";
+                localStorage.userId = rs.userId;
                 $(".ui-registerResult-con").show();
                 $(".ui-default-con").hide();
             }else{
