@@ -26,7 +26,7 @@ exports.register = function(params,session){
        data:{
             password:params.password,
             email:params.email,
-            tel:params.tel,
+            tel:Number(params.tel),
             companyName:params.companyName,
             registerFrom:params.registerFrom,
             registerTime:moment().format("YYYY-MM-DD HH:mm:ss"),
