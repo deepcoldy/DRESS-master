@@ -67,7 +67,7 @@ define(function(req,exp){
             		$(".ui-resetpassword-con button,.ui-resetpassword-con .firststep,.passworderror").hide();
             	}
             }else{
-                $(".passworderror").html("发送出错").show();
+                $(".passworderror").html(rs.msg).show();
             }
         });
 
