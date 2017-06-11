@@ -4,6 +4,7 @@
 
 var config = require('../upload.config.js');
 var qiniu = require('qiniu');
+var moment = require("moment");
 var uptoken = new qiniu.rs.PutPolicy(config.Bucket_Name);
 //登陆
 exports.login = function(params,session){
@@ -13,6 +14,23 @@ exports.login = function(params,session){
        data:{
            user_name:params.account,
            password:params.password
+       }
+
+   }
+};
+//注册
+exports.register = function(params,session){
+   return {
+       url:"/user/register",
+       type:"post",
+       data:{
+            password:params.password,
+            email:params.email,
+            tel:params.tel,
+            companyName:params.companyName,
+            registerFrom:params.registerFrom,
+            registerTime:moment().format("YYYY-MM-DD HH:mm:ss"),
+            registerIp:session.ip
        }
 
    }

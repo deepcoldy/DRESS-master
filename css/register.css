@@ -1,0 +1,94 @@
+.ui-register-con {
+    width: 350px;
+    margin: 0 auto;
+}
+.ui-register-con .ui-web-logo {
+    width: 85%;
+    margin: 10px auto;
+}
+.ui-register-con .ui-login-form {
+    width: auto;
+}
+.ui-register-con .ui-error-text {
+    color: red;
+}
+.ui-register-input input {
+    text-indent: 1em;
+    border: 1px solid #666;
+    margin: 10px 0;
+    height: 2.444rem;
+    width: 100%;
+    -webkit-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -moz-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -o-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -mso-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+} 
+.ui-register-con .ui-web-btn {
+    width: 80%;
+    margin: 16px auto;
+}
+.ui-register-con .label {
+    font-size: 20px;
+    color: black;
+}
+.ui-register-con .explain {
+    font-size: 12px;
+    color: #444;
+}
+.at_once {
+    color: blue;
+    padding-left: 4px;
+    cursor: pointer;
+}
+.ui-register-con .ui-procol-des {
+    text-align: center;
+    line-height: 20px;
+    margin-top: 20px;
+}
+
+
+.ui-registerResult-con {
+    text-align: center;
+    margin-top: 7%;
+    line-height: 26px;
+}
+.ui-registerResult-con h4 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.ui-registerResult-con .email {
+    font-size: 16px;
+    color: blue;
+}
+.ui-registerResult-con h5 {
+    margin-top: 7%;
+    font-size: 20px;
+}
+.ui-registerResult-con .problem {
+    text-align: left;
+    margin-top: 10px;
+    display: inline-block;
+}
+.ui-registerResult-con .problem span {color: blue;cursor: pointer;padding-left: 2px;}
+
+
+.registerSuccess {
+    margin-top: 17%;
+    text-align: center;
+}
+.registerSuccess h5 {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+.registerSuccess button {
+    line-height: 2.44444rem;
+    -webkit-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -moz-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -o-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    -mso-border-radius: 0.35714rem 0.35714rem 0.35714rem;
+    background-color: #0099ff;
+    color: #fff;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 38px;
+}

@@ -7,7 +7,8 @@ define(function(req,exp,mod){
     };
 
     mod.exports = {
-        login: service("login"),                   /*登陆注册短信验证码等*/
+        login: service("login"),                   /*登陆*/
+        register: service("register"),                   /*注册短信验证码等*/
         getVideoList:service("getVideoList"),      //获取视频列表
         uploadVideo: service("uploadVideo"),       //上传视频列表
         searchByName:service("searchByName"),       //搜索视频通过姓名（列表页）

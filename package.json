@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "apn": "^1.7.8",
-    "ifun": "0.0.9"
+    "ifun": "0.0.9",
+    "moment": "^2.18.1"
   },
   "scripts": {
     "init": "node ./build/init.js",

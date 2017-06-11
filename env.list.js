@@ -8,7 +8,7 @@ var envList = module.exports = {
     },
 
     test: {
-        ip: "vrs-api.dressplus.cn",
+        ip: "dressplus-api.appdevs.cn",
         node:{
             port: 3003
         },

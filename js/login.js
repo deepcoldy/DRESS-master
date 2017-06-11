@@ -31,6 +31,10 @@ define(function(req,exp){
 
     }
 
+    exp.register = function(){
+        exp.go("register");
+    }
+
     exp.hideError = function () {
         $(".ui-error-con").hide();
     }
