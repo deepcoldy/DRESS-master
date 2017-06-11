@@ -24,7 +24,7 @@ define(function(req,exp){
             var code=dress.substring(dress.lastIndexOf("/")+1);
             var data={};
             data.code=code;
-            data.userId=10043;
+            data.userId=localStorage.userId;
             data.registerFrom="100",
             data.type="100";
             service.activation(data,function (rs) {
