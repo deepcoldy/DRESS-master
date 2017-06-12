@@ -13,12 +13,12 @@
                 <span class="ui-lock-icon"></span>
                 <input data-event="blur>hideError" data-bind="args.password" type="password"/>
             </div>
+            <input type="text" data-event="blur>hideError" data-bind="getVerifyCode" class="getVerifyCode" placeholder="验证码"/>
+            <img class="getVerify"><div id="noclear">看不清？<span data-event="changecode">换一张</span></div>
             <div class="ui-error-con">
                 <span class="ui-error-icon"></span>
                 <span class="ui-error-text">请输入正确的用户名或密码或验证码</span>
             </div>
-            <input type="text" data-event="blur>hideError" data-bind="getVerifyCode" class="getVerifyCode" placeholder="验证码"/>
-            <img class="getVerify"><div id="noclear">看不清？<span data-event="changecode">换一张</span></div>
             <div data-event="resetpassword" class="clickgo">忘记密码</div>
             <div data-event="login" class="ui-web-btn">登录</div>
             <div data-event="register" class="clickgo" style="text-align:center;">立即注册</div>

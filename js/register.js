@@ -17,7 +17,7 @@ define(function(req,exp){
         registerFrom:"100",
     }
     exp.onInit = function (done) {
-        // exp.changecode();
+        exp.changecode();
 
         //如果邮箱激活进来
         //url="www.test.com/#register/activation/code/user_id/fasdfad"

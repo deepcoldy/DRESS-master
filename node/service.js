@@ -29,7 +29,7 @@ exports.getVerify = function(params,session){
 //校验验证码
 exports.verifyCheck = function(params,session){
    return {
-       url:"/Verify/check",
+       url:"/verify/check",
        type:"post",
        data:{
             code:params.code

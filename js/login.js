@@ -13,7 +13,7 @@ define(function(req,exp){
     exp.onInit = function (done) {  
 
         // 获取验证码
-        // exp.changecode();
+        exp.changecode();
         if(sessionStorage.userId){
             exp.go("list");
         }else {
@@ -25,6 +25,7 @@ define(function(req,exp){
     exp.login = function () {
         if (!validate()) {
             $(".ui-error-con").show();
+            return false;
         };
         if (lock) {
             lock=false;
@@ -81,4 +82,5 @@ define(function(req,exp){
            return false;
         };
         return true;
+    }
 });
