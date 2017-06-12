@@ -10,17 +10,15 @@ define(function(req,exp){
         password:"",
         account:""
     }
-    exp.onInit = function (done) {
-        
+    exp.onInit = function (done) {  
+
+        // 获取验证码
+        // exp.changecode();
         if(sessionStorage.userId){
             exp.go("list");
         }else {
             done();
-        }
-        //获取验证码
-        // service.getVerify(function(data){
-        //     $(".getVerify").attr("src",data);
-        // })
+        }       
     }
 
     var lock=true;
@@ -29,11 +27,11 @@ define(function(req,exp){
             lock=false;
             service.verifyCheck({code:exp.getVerifyCode},function(rs){
                 if (rs.status=="SUCCESS") {
-                    service.login(exp.args,function (rs) {
+                    service.login(exp.args,function (resdata) {
                         lock=true;
-                        if(rs.status == "SUCCESS"){
-                            sessionStorage.userId =localStorage.userId= rs.userId;
-                            sessionStorage.name = rs.data.name;
+                        if(resdata.status == "SUCCESS"){
+                            sessionStorage.userId =localStorage.userId= resdata.userId;
+                            sessionStorage.name = resdata.data.name;
                             exp.go("list");
                         }else{
                             $(".ui-error-con").show();
@@ -57,5 +55,12 @@ define(function(req,exp){
 
     exp.hideError = function () {
         $(".ui-error-con").hide();
+    }
+
+    exp.changecode=function(){
+        //获取验证码
+        service.getVerify(function(data){
+            $(".getVerify").attr("src",data);
+        })
     }
 });

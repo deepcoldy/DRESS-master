@@ -82,6 +82,18 @@ exports.activation = function(params,session){
 
    }
 };
+//重新激活
+exports.reSend = function(params,session){
+   return {
+       url:"/user/reSend",
+       type:"post",
+       data:{
+            userId:params.userId,
+            email:params.email
+       }
+
+   }
+};
 
 exports.deleteVideo = function (params,session) {
     return{
