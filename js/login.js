@@ -23,6 +23,9 @@ define(function(req,exp){
 
     var lock=true;
     exp.login = function () {
+        if (!validate()) {
+            $(".ui-error-con").show();
+        };
         if (lock) {
             lock=false;
             service.verifyCheck({code:exp.getVerifyCode},function(rs){
@@ -63,4 +66,19 @@ define(function(req,exp){
             $(".getVerify").attr("src",data);
         })
     }
+
+    const EMAIL=/^[\w\-]+@([\w\-]+\.)+(com|net|cn|com\.cn|cc|info|me|org)$/;
+    const PASSWORD=/^[A-Za-z0-9_]{6,20}$/;
+    // 验证是否合法字符
+    function validate(){
+        if (!EMAIL.test(exp.args.account)) {
+            return false;
+        };
+        if (!PASSWORD.test(exp.args.password)) {
+            return false;
+        };
+        if (exp.getVerifyCode=="") {
+           return false;
+        };
+        return true;
 });

@@ -55,13 +55,14 @@ define(function(req,exp){
     }
     var lock=true;
     exp.register = function () {
+        if (!validate()) {
+            return false;
+        };
         if (lock) {
             lock=false;
             service.verifyCheck({code:exp.registerVerifyCode},function(rs){
                 if (rs.status=="SUCCESS") {
-                    if (validate()) {
-                        registersend();
-                    };
+                    registersend();
                 }else{
                     lock=true;
                     $(".ui-error-text").html("验证码错误").show();
@@ -132,6 +133,9 @@ define(function(req,exp){
         };
         if (!PASSWORD.test(exp.args.password)) {
             errormessage+=" 密码";
+        };
+        if (exp.registerVerifyCode=="") {
+            errormessage+=" 验证码";
         };
         if (errormessage=="") {
             return true;
