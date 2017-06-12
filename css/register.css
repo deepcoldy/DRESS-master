@@ -5,6 +5,7 @@
 }
 .ui-register-con .ui-web-logo {
     width: 85%;
+    min-height: 9rem;
     margin: 10px auto;
 }
 .ui-register-con .ui-login-form {
@@ -17,7 +18,7 @@
     text-indent: 1em;
     border: 1px solid #666;
     margin: 10px 0;
-    height: 2.444rem;
+    height: 3rem;
     width: 100%;
     -webkit-border-radius: 0.35714rem 0.35714rem 0.35714rem;
     -moz-border-radius: 0.35714rem 0.35714rem 0.35714rem;
@@ -38,11 +39,13 @@
 }
 #registerVerifyCode {
     width: 126px;
+    position: absolute;
+    left: 0;
 }
 #registernoclear {
     position: absolute;
     right: 0;
-    top: 426px;
+    top: 458px;
 }
 #registernoclear span {
      color: #1874CD;
@@ -99,7 +102,7 @@
     height: 74px;
 }
 .registerSuccess button {
-    line-height: 2.44444rem;
+    line-height: 3rem;
     -webkit-border-radius: 0.35714rem 0.35714rem 0.35714rem;
     -moz-border-radius: 0.35714rem 0.35714rem 0.35714rem;
     -o-border-radius: 0.35714rem 0.35714rem 0.35714rem;
@@ -109,4 +112,11 @@
     cursor: pointer;
     width: 200px;
     margin-top: 38px;
+}
+.registerVerify{
+    display: inline;
+    max-height: 3rem;
+    width: 26%;
+    margin: 10px 0;
+    margin-left: 150px;
 }

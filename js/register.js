@@ -98,7 +98,7 @@ define(function(req,exp){
     exp.changecode=function(){
         //获取验证码
         service.getVerify(function(data){
-            $(".registerVerify").attr("src",data);
+            $(".registerVerify").attr("src",'data:image/png;base64,' + data.data.code);
         })
     }
 
