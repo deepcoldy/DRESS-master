@@ -13,7 +13,7 @@ define(function(req,exp){
     exp.onInit = function (done) {  
 
         // 获取验证码
-        // exp.changecode();
+        exp.changecode();
         if(sessionStorage.userId){
             exp.go("list");
         }else {
@@ -60,7 +60,7 @@ define(function(req,exp){
     exp.changecode=function(){
         //获取验证码
         service.getVerify(function(data){
-            $(".getVerify").attr("src",data);
+            $(".getVerify").attr("src",'data:image/png;base64,' + data.data.code);
         })
     }
 });
