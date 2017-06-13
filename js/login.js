@@ -29,7 +29,10 @@ define(function(req,exp){
         };
         if (lock) {
             lock=false;
-            service.verifyCheck({code:exp.getVerifyCode},function(rs){
+            service.verifyCheck({
+                code:exp.getVerifyCode,
+                ckey:$(".getVerify").attr("ckey")
+            },function(rs){
                 if (rs.status=="SUCCESS") {
                     service.login(exp.args,function (resdata) {
                         lock=true;
@@ -65,6 +68,7 @@ define(function(req,exp){
         //获取验证码
         service.getVerify(function(data){
             $(".getVerify").attr("src",'data:image/png;base64,' + data.data.code);
+            $(".getVerify").attr("ckey",data.data.ckey);
         })
     }
 

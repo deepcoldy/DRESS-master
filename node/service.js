@@ -32,7 +32,8 @@ exports.verifyCheck = function(params,session){
        url:"/verify/check",
        type:"post",
        data:{
-            code:params.code
+            code:params.code,
+            ckey:params.ckey
        }
 
    }
