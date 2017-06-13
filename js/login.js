@@ -37,7 +37,7 @@ define(function(req,exp){
                     service.login(exp.args,function (resdata) {
                         lock=true;
                         if(resdata.status == "SUCCESS"){
-                            sessionStorage.userId =localStorage.userId= resdata.userId;
+                            sessionStorage.userId =localStorage.userId= resdata.data.userId;
                             sessionStorage.name = resdata.data.name;
                             exp.go("list");
                         }else{

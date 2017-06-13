@@ -99,21 +99,30 @@ define(function(req,exp){
         //获取验证码
         service.getVerify(function(data){
             $(".registerVerify").attr("src",'data:image/png;base64,' + data.data.code);
+            $(".registerVerify").attr("ckey",data.data.ckey);
         })
     }
 
     // 发送注册请求
     function registersend(){
-        service.register(exp.args,function (rs) {
-            if(rs.status == "SUCCESS"){
-                localStorage.userId = rs.data.userId;
-                $(".ui-registerResult-con").show();
-                $(".ui-default-con").hide();
-                $(".ui-registerResult-con .email").html(exp.args.email);
-            }else{
-                $(".ui-error-text").html("注册失败请重新注册").show();
+        service.verifyCheck({
+            code:exp.registerVerifyCode,
+            ckey:$(".registerVerify").attr("ckey")
+        },function(rs){
+            if (rs.status=="SUCCESS") {
+                service.register(exp.args,function (rs) {
+                    if(rs.status == "SUCCESS"){
+                        localStorage.userId = rs.data.userId;
+                        $(".ui-registerResult-con").show();
+                        $(".ui-default-con").hide();
+                        $(".ui-registerResult-con .email").html(exp.args.email);
+                    }else{
+                        $(".ui-error-text").html("注册失败请重新注册").show();
+                    }
+                });
             }
-        });
+        })
+        
     }
     const EMAIL=/^[\w\-]+@([\w\-]+\.)+(com|net|cn|com\.cn|cc|info|me|org)$/;
     const TEL=/^1[3|4|5|8][0-9]\d{4,8}$/;
