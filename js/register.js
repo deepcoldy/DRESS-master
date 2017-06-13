@@ -60,7 +60,10 @@ define(function(req,exp){
         };
         if (lock) {
             lock=false;
-            service.verifyCheck({code:exp.registerVerifyCode},function(rs){
+            service.verifyCheck({
+                code:exp.registerVerifyCode,
+                ckey:$(".getVerify").attr("ckey")
+            },function(rs){
                 if (rs.status=="SUCCESS") {
                     registersend();
                 }else{
@@ -105,24 +108,16 @@ define(function(req,exp){
 
     // 发送注册请求
     function registersend(){
-        service.verifyCheck({
-            code:exp.registerVerifyCode,
-            ckey:$(".registerVerify").attr("ckey")
-        },function(rs){
-            if (rs.status=="SUCCESS") {
-                service.register(exp.args,function (rs) {
-                    if(rs.status == "SUCCESS"){
-                        localStorage.userId = rs.data.userId;
-                        $(".ui-registerResult-con").show();
-                        $(".ui-default-con").hide();
-                        $(".ui-registerResult-con .email").html(exp.args.email);
-                    }else{
-                        $(".ui-error-text").html("注册失败请重新注册").show();
-                    }
-                });
+        service.register(exp.args,function (rs) {
+            if(rs.status == "SUCCESS"){
+                localStorage.userId = rs.data.userId;
+                $(".ui-registerResult-con").show();
+                $(".ui-default-con").hide();
+                $(".ui-registerResult-con .email").html(exp.args.email);
+            }else{
+                $(".ui-error-text").html("注册失败请重新注册").show();
             }
-        })
-        
+        });
     }
     const EMAIL=/^[\w\-]+@([\w\-]+\.)+(com|net|cn|com\.cn|cc|info|me|org)$/;
     const TEL=/^1[3|4|5|8][0-9]\d{4,8}$/;
