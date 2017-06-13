@@ -12,6 +12,7 @@ define(function(req,exp,mod){
         getVerify: service("getVerify"),           /*验证码*/
         verifyCheck: service("verifyCheck"),       /*校验验证码*/
         activation: service("activation"),         /*邮箱激活*/
+        reSend: service("reSend"),                 /*重新激活*/
         resetpassword: service("resetpassword"),   /*重置密码*/
         getVideoList:service("getVideoList"),      //获取视频列表
         uploadVideo: service("uploadVideo"),       //上传视频列表

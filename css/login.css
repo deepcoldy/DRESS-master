@@ -25,6 +25,7 @@
     margin: 0 auto;
     height: auto;
     margin-top: 16.66667rem;
+    position: relative;
 }
 .ui-login-con .ui-web-input{
     height: 3.22222rem;
@@ -92,15 +93,25 @@
     -o-border-radius: 0.35714rem 0.35714rem 0.35714rem;
     -mso-border-radius: 0.35714rem 0.35714rem 0.35714rem;
     line-height: 3.22222rem;
-    width: 150px;
-    margin-bottom: 12px;
+    width: 100px;
+    text-indent: 1em;
 }
 .getVerify {
     display: inline-block;
-    max-width: 150px;
+    max-width: 100px;
+}
+#noclear {
+    position: absolute;
+    right: 0;
+    top: 234px;
+}
+#noclear span {
+    color: blue;
+    cursor: pointer;
 }
 .clickgo {
     cursor: pointer;
-    float: right;
+    text-align: right;
     padding: 10px;
+    color: #1874CD;
 }

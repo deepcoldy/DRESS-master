@@ -13,10 +13,11 @@ define(function(req,exp){
         var dress=window.location.href;
         if (dress.indexOf("activation/")>0) {
             exp.thirdstep=true;
-            var code=dress.substring(dress.lastIndexOf("/")+1);
+            var start=dress.indexOf("activation/")+11;
+            var code=dress.substring(start,dress.indexOf("/user_id"));
             var data={};
             data.code=code;
-            data.userId=localStorage.userId;
+            data.userId=dress.substring(dress.lastIndexOf("/")+1);
             data.registerFrom="100",
             data.type="100";
             service.activation(data,function (rs) {

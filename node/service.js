@@ -29,7 +29,7 @@ exports.getVerify = function(params,session){
 //校验验证码
 exports.verifyCheck = function(params,session){
    return {
-       url:"/Verify/check",
+       url:"/verify/check",
        type:"post",
        data:{
             code:params.code
@@ -78,6 +78,18 @@ exports.activation = function(params,session){
             userId:params.userId,
             registerFrom:params.registerFrom,
             type:params.type
+       }
+
+   }
+};
+//重新激活
+exports.reSend = function(params,session){
+   return {
+       url:"/user/reSend",
+       type:"post",
+       data:{
+            userId:params.userId,
+            email:params.email
        }
 
    }
