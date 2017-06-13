@@ -36,45 +36,63 @@ define(function(req,exp){
         done();
     }
             
-    const EMAIL=/^[\w\-]+@([\w\-]+\.)+(com|net|cn|com\.cn|cc|info|me|org)$/;
     exp.confirmclick = function () {
-    	var data={};
-    	data.userId=localStorage.userId;
-    	data.step="100";
-    	if (exp.thirdstep) {
-    		if (exp.newpassword==exp.confirmpassword && exp.newpassword!="") {
-    			data.step="200";
-    			data.password=exp.newpassword;
-    		}else{
-    			$(".passworderror").html("密码不相等").show();
-    			return false;
-    		}
-    	}else{
-            if (!EMAIL.test(exp.account)) {
-                $(".passworderror").html("邮箱格式不对").show();
-                return false;
-            };
+        if (!exp.hideError()) {
+            return false;
+        };
+        var data={};
+        data.userId=localStorage.userId;
+        data.step="100";
+        if (exp.thirdstep) {
+            data.step="200";
+            data.password=exp.newpassword;
         }
-        
+
         service.resetpassword(data,function (rs) {
             if(rs.status == "SUCCESS"){
-            	if (exp.thirdstep) {
-                	exp.go("login");
-            	}else{
+                if (exp.thirdstep) {
+                    exp.go("login");
+                }else{
                     $(".resetaccount").html(exp.account);
                     $(".ui-resetpassword-con .step-con").removeClass("isactive")
                     $(".ui-resetpassword-con .step-con").eq(1).addClass("isactive")
-            		$(".secondstep").show();
-            		$(".ui-resetpassword-con button,.ui-resetpassword-con .firststep,.passworderror").hide();
-            	}
+                    $(".secondstep").show();
+                    $(".ui-resetpassword-con button,.ui-resetpassword-con .firststep,.passworderror").hide();
+                }
             }else{
-                $(".passworderror").html(rs.msg).show();
+                if (exp.thirdstep) {
+                    $(".passworderror").html(rs.msg).show();
+                }else{
+                    $(".passworderror").html("用户名不存在").show();
+                }
+                
             }
         });
 
     }
 
+    const EMAIL=/^[\w\-]+@([\w\-]+\.)+(com|net|cn|com\.cn|cc|info|me|org)$/;
     exp.hideError=function(){
-    	$(".passworderror").hide();
+        var flag=false;
+        if (exp.thirdstep) {
+            if (exp.newpassword==exp.confirmpassword && exp.newpassword!="") {
+                flag=true;
+            }else{
+                $(".passworderror").html("密码不相等").show();
+            }
+        }else{
+            if (EMAIL.test(exp.account)) {
+                flag=true;
+            }else{
+                $(".passworderror").html("邮箱格式不对").show();
+            }
+        }
+        if (flag) { 
+            $(".passworderror").hide();
+            $(".ui-resetpassword-con button").css("backgroundColor","#0099ff");
+        }else{
+            $(".ui-resetpassword-con button").css("backgroundColor","#c1c1c1");
+        }
+        return flag;
     }
 });

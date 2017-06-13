@@ -33,7 +33,7 @@ define(function(req,exp){
             data.type="100";
             service.activation(data,function (rs) {
                 if(rs.status == "SUCCESS"){
-                    $(".registerSuccess h5").html("注册成功");
+                    $(".registerSuccess .action").html("注册成功");
                     $(".registerSuccess .content").show();
                     $("#activationsuccess").addClass("success_icon");
                     var time=setInterval(function(){
@@ -47,7 +47,7 @@ define(function(req,exp){
                         }
                     },1000);
                 }else{
-                    $(".registerSuccess h5").html("激活失败请重新激活").show();
+                    $(".registerSuccess .action").html("激活失败").show();
                 }
             });
         };
@@ -109,12 +109,14 @@ define(function(req,exp){
     // 发送注册请求
     function registersend(){
         service.register(exp.args,function (rs) {
+            lock=true;
             if(rs.status == "SUCCESS"){
                 localStorage.userId = rs.data.userId;
                 $(".ui-registerResult-con").show();
                 $(".ui-default-con").hide();
                 $(".ui-registerResult-con .email").html(exp.args.email);
             }else{
+                exp.changecode();
                 $(".ui-error-text").html("注册失败请重新注册").show();
             }
         });
@@ -132,7 +134,7 @@ define(function(req,exp){
         if (!TEL.test(exp.args.tel)) {
             errormessage+=" 电话号码";
         };
-        if (!COMPANYY.test(exp.args.companyName)) {
+        if (exp.args.companyName.length>20 || exp.args.companyName.length<3) {
             errormessage+=" 公司名称";
         };
         if (!PASSWORD.test(exp.args.password)) {

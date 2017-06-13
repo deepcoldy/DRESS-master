@@ -97,16 +97,16 @@
     text-indent: 1em;
 }
 .getVerify {
-    display: inline-block;
+    position: absolute;
+    right: 48px;
+    top: 218px;
     max-width: 100px;
 }
 #noclear {
     position: absolute;
     right: 0;
     top: 234px;
-}
-#noclear span {
-    color: blue;
+    color: #1874CD;
     cursor: pointer;
 }
 .clickgo {
