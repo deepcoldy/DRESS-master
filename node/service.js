@@ -46,8 +46,7 @@ exports.resetpassword = function(params,session){
        data:{
             userId:params.userId,
             password:params.password,
-            password:params.password,
-            password:params.step
+            step:params.step
        }
 
    }
