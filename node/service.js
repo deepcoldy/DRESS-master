@@ -40,15 +40,19 @@ exports.verifyCheck = function(params,session){
 };
 //校验验证码
 exports.resetpassword = function(params,session){
-   return {
+    var data = {
+        userId:params.userId
+    }
+    if(params.step == 100){
+        data.step = 100;
+    } else {
+        data.password = params.password;
+        data.step = 200;
+    }
+    return {
        url:"/user/resetPass",
        type:"post",
-       data:{
-            userId:params.userId,
-            password:params.password,
-            step:params.step
-       }
-
+       data:data
    }
 };
 //注册

@@ -42,9 +42,9 @@ define(function(req,exp){
         };
         var data={};
         data.userId=localStorage.userId;
-        data.step="100";
+        data.step=100;
         if (exp.thirdstep) {
-            data.step="200";
+            data.step=200;
             data.password=exp.newpassword;
         }
 
