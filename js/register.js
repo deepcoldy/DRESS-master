@@ -62,7 +62,7 @@ define(function(req,exp){
             lock=false;
             service.verifyCheck({
                 code:exp.registerVerifyCode,
-                ckey:$(".getVerify").attr("ckey")
+                ckey:$(".registerVerify").attr("ckey")
             },function(rs){
                 if (rs.status=="SUCCESS") {
                     registersend();
