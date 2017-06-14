@@ -119,12 +119,9 @@ define(function(req,exp){
                 $(".ui-registerResult-con .email").html(exp.args.email);
             }else{
                 exp.changecode();
-<<<<<<< HEAD
                 var msg=rs.msg|| "注册失败请重新注册";
                 $(".ui-error-text").html(msg).show();
-=======
                 $(".ui-error-text").html(rs.msg).show();
->>>>>>> d3869699c0f7d09b5ead66820590663623eb004f
             }
         });
     }
