@@ -9,11 +9,12 @@ define(function(req,exp){
     exp.account ="";
     exp.newpassword ="";
     exp.confirmpassword ="";
+    var code="";
     exp.onInit = function (done) {
         var dress=window.location.href;
         if (dress.indexOf("activation/")>0) {
             var start=dress.indexOf("activation/")+11;
-            var code=dress.substring(start,dress.indexOf("/user_id"));
+            code=dress.substring(start,dress.indexOf("/user_id"));
             var data={};
             data.code=code;
             data.userId=dress.substring(dress.lastIndexOf("/")+1);
@@ -21,7 +22,7 @@ define(function(req,exp){
             data.type="100";
             exp.thirdstep=true;
             service.activation(data,function (rs) {
-                if(rs.status == "SUCCESS"){
+                if(rs.status != "SUCCESS"){
                     // console.log("SUCCESS")                 
                     $(".ui-resetpassword-con .step-con").removeClass("isactive");
                     $(".ui-resetpassword-con .step-con").eq(2).addClass("isactive");
@@ -44,6 +45,7 @@ define(function(req,exp){
         data.userName=exp.account;
         data.step=100;
         if (exp.thirdstep) {
+            data.userName=code;
             data.step=200;
             data.password=exp.newpassword;
         }
