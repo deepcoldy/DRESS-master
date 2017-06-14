@@ -115,3 +115,63 @@
     padding: 10px 0;
     color: #1874CD;
 }
+#login_error_msg {
+    position:absolute;
+    top:262px;
+    left:0;
+}
+
+@media screen and (min-width: 1366px) {
+    #login_error_msg {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    #noclear {
+        top: 253px;
+    } 
+    .getVerify {
+        top: 239px;
+        right: 58px;
+    }
+    #login_error_msg {
+        top:282px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    #noclear {
+        top: 284px;
+    } 
+    .getVerify {
+        top: 272px;
+        right: 65px;
+    }
+    .getVerifyCode  {
+        width: 130px;
+    }
+    #login_error_msg {
+        top:316px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    #noclear {
+        top: 338px;
+    } 
+    .getVerify {
+        top: 323px;
+        right: 86px;
+        max-width: 124px;
+    }
+    .getVerifyCode  {
+        width: 140px;
+    }
+    #login_error_msg {
+        top:376px;
+        font-size: 16px;
+    }
+}
