@@ -41,7 +41,7 @@ define(function(req,exp){
             return false;
         };
         var data={};
-        data.userId=exp.account;
+        data.userName=exp.account;
         data.step=100;
         if (exp.thirdstep) {
             data.step=200;
@@ -60,12 +60,7 @@ define(function(req,exp){
                     $(".ui-resetpassword-con button,.ui-resetpassword-con .firststep,.passworderror").hide();
                 }
             }else{
-                if (exp.thirdstep) {
-                    $(".passworderror").html(rs.msg).show();
-                }else{
-                    $(".passworderror").html("用户名不存在").show();
-                }
-                
+                $(".passworderror").html(rs.msg).show();
             }
         });
 
