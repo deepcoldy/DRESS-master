@@ -19,10 +19,10 @@ define(function(req,exp){
             data.userId=dress.substring(dress.lastIndexOf("/")+1);
             data.registerFrom="100",
             data.type="100";
+            exp.thirdstep=true;
             service.activation(data,function (rs) {
                 if(rs.status == "SUCCESS"){
-                    // console.log("SUCCESS")
-                    exp.thirdstep=true;
+                    // console.log("SUCCESS")                 
                     $(".ui-resetpassword-con .step-con").removeClass("isactive");
                     $(".ui-resetpassword-con .step-con").eq(2).addClass("isactive");
                 }else{
