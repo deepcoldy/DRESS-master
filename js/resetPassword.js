@@ -22,7 +22,7 @@ define(function(req,exp){
             data.type="100";
             exp.thirdstep=true;
             service.activation(data,function (rs) {
-                if(rs.status != "SUCCESS"){
+                if(rs.status == "SUCCESS"){
                     // console.log("SUCCESS")                 
                     $(".ui-resetpassword-con .step-con").removeClass("isactive");
                     $(".ui-resetpassword-con .step-con").eq(2).addClass("isactive");
