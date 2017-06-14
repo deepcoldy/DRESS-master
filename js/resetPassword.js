@@ -19,7 +19,7 @@ define(function(req,exp){
             data.code=code;
             data.userId=userId=dress.substring(dress.lastIndexOf("/")+1);
             data.registerFrom="100",
-            data.type="100";
+            data.type="200";
             exp.thirdstep=true;
             service.activation(data,function (rs) {
                 if(rs.status == "SUCCESS"){
