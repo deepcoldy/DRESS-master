@@ -1,7 +1,8 @@
-<div>
+<div class="register-background">
 {if !this.registerSuccess}
 <div class="ui-register-con ui-default-con" {if this.registerResult}style="display: none"{/if}>    
-    <div class="ui-login-form">
+    <!--<div class="ui-login-form">-->
+    <div class="ui-login-form" style="margin-top:50px !important;">
         <div class="ui-web-logo"> </div>
         <div class="ui-register-input">
             <div class="label">邮箱<span class="explain">邮箱作为注册账号的账户名称</span></div>
@@ -19,7 +20,7 @@
         <div class="ui-error-text"></div>
         <div data-event="register" class="ui-web-btn">同意协议并注册</div>
     </div>
-    <div style="text-align:center;">已经有账号了？<span data-event="login" class="at_once">立即登录</span></div>
+    <div style="text-align:center;color: #808080;">已经有账号了？<span data-event="login" class="at_once">立即登录</span></div>
     <div class="ui-procol-des">
         <p class="ui-order-h-des">
             <span>用户协议</span>
