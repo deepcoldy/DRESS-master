@@ -41,7 +41,7 @@ define(function(req,exp){
             return false;
         };
         var data={};
-        data.userId=localStorage.userId;
+        data.userId=exp.account;
         data.step=100;
         if (exp.thirdstep) {
             data.step=200;

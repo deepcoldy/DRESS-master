@@ -117,7 +117,7 @@ define(function(req,exp){
                 $(".ui-registerResult-con .email").html(exp.args.email);
             }else{
                 exp.changecode();
-                $(".ui-error-text").html("注册失败请重新注册").show();
+                $(".ui-error-text").html(rs.msg).show();
             }
         });
     }
