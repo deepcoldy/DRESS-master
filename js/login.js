@@ -42,12 +42,12 @@ define(function(req,exp){
                             exp.go("list");
                         }else{
                             exp.changecode();
-                            $(".ui-error-con").show();
+                            $(".ui-error-con").show().html(resdata.msg);
                         }
                     });
                 }else{
                     lock=true;
-                    $(".ui-error-con").show();
+                    $(".ui-error-con").show().html(rs.msg);
                 }
             })
         };
