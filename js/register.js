@@ -50,7 +50,9 @@ define(function(req,exp){
                     $(".registerSuccess .action").html("激活失败").show();
                 }
             });
-        };
+        }else{
+           exp.registerSuccess=false; 
+        }
         done();
     }
     var lock=true;
@@ -117,7 +119,8 @@ define(function(req,exp){
                 $(".ui-registerResult-con .email").html(exp.args.email);
             }else{
                 exp.changecode();
-                $(".ui-error-text").html("注册失败请重新注册").show();
+                var msg=rs.msg|| "注册失败请重新注册";
+                $(".ui-error-text").html(msg).show();
             }
         });
     }

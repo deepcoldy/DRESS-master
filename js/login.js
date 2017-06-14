@@ -41,6 +41,7 @@ define(function(req,exp){
                             sessionStorage.name = resdata.data.name;
                             exp.go("list");
                         }else{
+                            exp.changecode();
                             $(".ui-error-con").show();
                         }
                     });

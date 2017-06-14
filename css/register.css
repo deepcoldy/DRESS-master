@@ -13,6 +13,7 @@
 }
 .ui-register-con .ui-error-text {
     color: red;
+    position: absolute;
 }
 .ui-register-con .ui-web-btn {
     background-color: #007cff;
