@@ -9,15 +9,15 @@ define(function(req,exp){
     exp.account ="";
     exp.newpassword ="";
     exp.confirmpassword ="";
-    var code="";
+    var userId="";
     exp.onInit = function (done) {
         var dress=window.location.href;
         if (dress.indexOf("activation/")>0) {
             var start=dress.indexOf("activation/")+11;
-            code=dress.substring(start,dress.indexOf("/user_id"));
+            var code=dress.substring(start,dress.indexOf("/user_id"));
             var data={};
             data.code=code;
-            data.userId=dress.substring(dress.lastIndexOf("/")+1);
+            data.userId=userId=dress.substring(dress.lastIndexOf("/")+1);
             data.registerFrom="100",
             data.type="100";
             exp.thirdstep=true;
@@ -45,7 +45,7 @@ define(function(req,exp){
         data.userName=exp.account;
         data.step=100;
         if (exp.thirdstep) {
-            data.userName=code;
+            data.userName=userId;
             data.step=200;
             data.password=exp.newpassword;
         }
