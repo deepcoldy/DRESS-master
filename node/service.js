@@ -48,6 +48,7 @@ exports.resetpassword = function(params,session){
     } else {
         data.password = params.password;
         data.step = 200;
+        data.userId=params.user_id;
     }
     return {
        url:"/user/resetPass",

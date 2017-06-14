@@ -42,12 +42,13 @@ define(function(req,exp){
             return false;
         };
         var data={};
-        data.userName=exp.account;
-        data.step=100;
         if (exp.thirdstep) {
-            data.userName=userId;
+            data.user_id=userId;
             data.step=200;
             data.password=exp.newpassword;
+        }else{
+            data.userName=exp.account;
+            data.step=100;
         }
 
         service.resetpassword(data,function (rs) {
