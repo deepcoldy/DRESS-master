@@ -12,7 +12,6 @@ define(function(req,exp){
     exp.onInit = function (done) {
         var dress=window.location.href;
         if (dress.indexOf("activation/")>0) {
-            exp.thirdstep=true;
             var start=dress.indexOf("activation/")+11;
             var code=dress.substring(start,dress.indexOf("/user_id"));
             var data={};
@@ -23,10 +22,11 @@ define(function(req,exp){
             service.activation(data,function (rs) {
                 if(rs.status == "SUCCESS"){
                     // console.log("SUCCESS")
+                    exp.thirdstep=true;
                     $(".ui-resetpassword-con .step-con").removeClass("isactive");
                     $(".ui-resetpassword-con .step-con").eq(2).addClass("isactive");
                 }else{
-                    $(".passworderror").html("邮箱验证码出错重新发送").show();
+                    $(".passworderror").html("邮箱验证码出错重新发送").css("visibility","visible");
                     exp.go("resetPassword");
                 }
             });
@@ -41,7 +41,7 @@ define(function(req,exp){
             return false;
         };
         var data={};
-        data.userId=localStorage.userId;
+        data.userName=exp.account;
         data.step=100;
         if (exp.thirdstep) {
             data.step=200;
@@ -60,12 +60,7 @@ define(function(req,exp){
                     $(".ui-resetpassword-con button,.ui-resetpassword-con .firststep,.passworderror").hide();
                 }
             }else{
-                if (exp.thirdstep) {
-                    $(".passworderror").html(rs.msg).show();
-                }else{
-                    $(".passworderror").html("用户名不存在").show();
-                }
-                
+                $(".passworderror").html(rs.msg).css("visibility","visible");
             }
         });
 
@@ -78,17 +73,17 @@ define(function(req,exp){
             if (exp.newpassword==exp.confirmpassword && exp.newpassword!="") {
                 flag=true;
             }else{
-                $(".passworderror").html("密码不相等").show();
+                $(".passworderror").html("密码不相等").css("visibility","visible");
             }
         }else{
             if (EMAIL.test(exp.account)) {
                 flag=true;
             }else{
-                $(".passworderror").html("邮箱格式不对").show();
+                $(".passworderror").html("邮箱格式不对").css("visibility","visible");
             }
         }
         if (flag) { 
-            $(".passworderror").hide();
+            $(".passworderror").css("visibility","hidden");
             $(".ui-resetpassword-con button").css("backgroundColor","#0099ff");
         }else{
             $(".ui-resetpassword-con button").css("backgroundColor","#c1c1c1");

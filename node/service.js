@@ -41,7 +41,7 @@ exports.verifyCheck = function(params,session){
 //校验验证码
 exports.resetpassword = function(params,session){
     var data = {
-        userId:params.userId
+        userName:params.userName
     }
     if(params.step == 100){
         data.step = 100;
